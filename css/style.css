@@ -1,0 +1,17 @@
+body {
+    /* background: url(/img_ny.jpg../images) no-repeat center center fixed;  */
+    background: url(https://source.unsplash.com/random/1920x1080) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#fullscreen-icon {
+    font-size:48px !important;
+    color:black;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
