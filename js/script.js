@@ -1,10 +1,21 @@
-const refreshTimeInMinutes = 5; 
+const refreshTimeInMinutes = 5;
 
 changeImage();
 
 function changeImage() {
+  const firstImage = document.getElementById('first-image');
+  const secondImage = document.getElementById('second-image');
+
   setInterval(function () {
-    document.body.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+    if (secondImage.style.opacity > 0) {
+      secondImage.style.opacity = 0;
+      secondImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+      firstImage.style.opacity = 100;
+    } else {
+      firstImage.style.opacity = 0;
+      firstImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+      secondImage.style.opacity = 100;
+    }
   }, refreshTimeInMinutes * 1000);
 }
 
