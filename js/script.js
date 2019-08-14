@@ -1,4 +1,4 @@
-const refreshTimeInMinutes = 5;
+const refreshTimeInMinutes = 10;
 
 changeImage();
 
@@ -8,13 +8,13 @@ function changeImage() {
 
   setInterval(function () {
     if (secondImage.style.opacity > 0) {
+      secondImage.style.transition = '';
       secondImage.style.opacity = 0;
       secondImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
-      firstImage.style.opacity = 100;
     } else {
-      firstImage.style.opacity = 0;
+      secondImage.style.transition = 'all 1s linear';
+      secondImage.style.opacity = 1;
       firstImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
-      secondImage.style.opacity = 100;
     }
   }, refreshTimeInMinutes * 1000);
 }
