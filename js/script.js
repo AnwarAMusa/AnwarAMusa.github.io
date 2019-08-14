@@ -1,7 +1,11 @@
+const refreshTimeInMinutes = 5; 
+
 changeImage();
 
 function changeImage() {
-  //setTimeout(changePhoto, 5000); // Change image every 2 seconds
+  setInterval(function () {
+    document.body.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+  }, refreshTimeInMinutes * 1000);
 }
 
 function fullscreen() {
@@ -12,11 +16,14 @@ function fullscreen() {
   /* Function to open fullscreen mode */
   if (document.documentElement.requestFullscreen) {
     document.documentElement.requestFullscreen();
-  } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+  } else if (document.documentElement.mozRequestFullScreen) {
+    /* Firefox */
     document.documentElement.mozRequestFullScreen();
-  } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    /* Chrome, Safari & Opera */
     document.documentElement.webkitRequestFullscreen();
-  } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+  } else if (document.documentElement.msRequestFullscreen) {
+    /* IE/Edge */
     document.documentElement.msRequestFullscreen();
   }
 

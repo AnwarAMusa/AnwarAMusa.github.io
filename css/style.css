@@ -8,8 +8,8 @@ body {
 }
 
 #fullscreen-icon {
-    font-size:48px !important;
-    color:black;
+    font-size: 48px !important;
+    color: black;
     cursor: pointer;
     position: fixed;
     bottom: 0px;
