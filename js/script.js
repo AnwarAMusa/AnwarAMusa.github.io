@@ -1,5 +1,6 @@
 const refreshTimeInMinutes = 10;
 var userPlaylists = [];
+const playlistUrl = "https://www.youtube.com/embed/videoseries?list=";
 
 changeImage();
 
@@ -31,6 +32,7 @@ function loadClient() {
         console.error("Error loading GAPI client for API", err);
       });
 }
+
 function execute() {
   return gapi.client.youtube.playlists.list({
       "part": "snippet,contentDetails",
@@ -50,6 +52,32 @@ gapi.load("client:auth2", function () {
     client_id: "314368813807-7tfs9ht0d1e459uchpoq52u9ubsk27cc.apps.googleusercontent.com"
   });
 });
+
+
+function displayPlaylists() {
+  var playlistDiv = document.getElementById("playlists");
+  var list = document.createElement("ul");
+  list.setAttribute("id", "playlists-list")
+  playlistDiv.appendChild(list);
+
+  userPlaylists.forEach(playlist => {
+    var listItem = document.createElement("li");
+    listItem.appendChild(document.createTextNode(playlist.snippet.title));
+    listItem.onclick = function () {
+      runPlaylist(playlist.id);
+    };
+    list.appendChild(listItem);
+  });
+
+  document.getElementById("music-controls").style.display = "none";
+}
+
+function runPlaylist(playlistId) {
+  var musicFrame = document.getElementById("music-iframe");
+  musicFrame.setAttribute("src", `${playlistUrl}${playlistId}`)
+  musicFrame.style.display = "inline";
+
+}
 
 function changeImage() {
   const firstImage = document.getElementById('first-image');

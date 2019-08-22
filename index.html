@@ -22,12 +22,12 @@
     </div>
 
     <div id="music-player">
-        <!-- <iframe id="music-iframe" src="https://www.youtube.com/embed/videoseries?list=RDlE6RYpe9IT0" frameborder="0" allow="autoplay; encrypted-media"></iframe> -->
-        <!-- <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/264204187&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe> -->
-        
-        <button onclick="authenticate().then(loadClient)">authorize and load</button>
-        <button onclick="execute()">execute</button>
-        <div id="music-controls"></div>
+        <iframe id="music-iframe" src="." allow="autoplay; encrypted-media" style="display:none;"></iframe>
+        <div id="playlists"></div>
+        <div id="music-controls">
+            <button onclick="authenticate().then(loadClient).then(execute).then(displayPlaylists)">Get YouTube
+                Playlists</button>
+        </div>
     </div>
 
     <script src="https://apis.google.com/js/api.js"></script>
