@@ -87,11 +87,11 @@ function changeImage() {
     if (secondImage.style.opacity > 0) {
       secondImage.style.transition = '';
       secondImage.style.opacity = 0;
-      secondImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+      secondImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,water,mountain,lake,river,sea,snow,sand,stars,${new Date().getTime()}')`;
     } else {
       secondImage.style.transition = 'all 1s linear';
       secondImage.style.opacity = 1;
-      firstImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,${new Date().getTime()}')`;
+      firstImage.style.backgroundImage = `url('https://source.unsplash.com/random/1920x1080/?nature,water,mountain,lake,river,sea,snow,sand,stars,${new Date().getTime()}')`;
     }
   }, refreshTimeInMinutes * 1000);
 }
