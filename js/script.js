@@ -1,6 +1,6 @@
 const refreshTimeInMinutes = 10;
 var userPlaylists = [];
-const playlistUrl = "https://www.youtube.com/embed/videoseries?list=";
+var playlistUrl = "https://www.youtube.com/embed/videoseries?list=";
 
 changeImage();
 
@@ -15,8 +15,8 @@ function authenticate() {
       scope: "https://www.googleapis.com/auth/youtube.readonly"
     })
     .then(function () {
-        console.log("Sign-in successful");
-      },
+      console.log("Sign-in successful");
+    },
       function (err) {
         console.error("Error signing in", err);
       });
@@ -26,8 +26,8 @@ function loadClient() {
   //gapi.client.setApiKey("");
   return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
     .then(function () {
-        console.log("GAPI client loaded for API");
-      },
+      console.log("GAPI client loaded for API");
+    },
       function (err) {
         console.error("Error loading GAPI client for API", err);
       });
@@ -35,14 +35,14 @@ function loadClient() {
 
 function execute() {
   return gapi.client.youtube.playlists.list({
-      "part": "snippet,contentDetails",
-      "maxResults": 25,
-      "mine": true
-    })
+    "part": "snippet,contentDetails",
+    "maxResults": 25,
+    "mine": true
+  })
     .then(function (response) {
-        userPlaylists = response.result.items;
-        console.log("userPlaylists", userPlaylists);
-      },
+      userPlaylists = response.result.items;
+      console.log("userPlaylists", userPlaylists);
+    },
       function (err) {
         console.error("Execute error", err);
       });
@@ -56,17 +56,29 @@ gapi.load("client:auth2", function () {
 
 function displayPlaylists() {
   var playlistDiv = document.getElementById("playlists");
-  var list = document.createElement("ul");
-  list.setAttribute("id", "playlists-list")
-  playlistDiv.appendChild(list);
-
   userPlaylists.forEach(playlist => {
-    var listItem = document.createElement("li");
-    listItem.appendChild(document.createTextNode(playlist.snippet.title));
-    listItem.onclick = function () {
+    var playlistCard = document.createElement("div");
+    playlistCard.setAttribute("class", "card");
+
+    var playlistCardImage = document.createElement("img");
+    playlistCardImage.setAttribute("class", "card-img-top");
+    playlistCardImage.setAttribute("src", playlist.snippet.thumbnails.medium.url);
+
+    var playlistCardBody = document.createElement("div");
+    playlistCardBody.setAttribute("class", "card-body");
+
+    var playlistTitle = document.createElement("h5");
+    playlistTitle.setAttribute("class", "card-title");
+    playlistTitle.appendChild(document.createTextNode(playlist.snippet.title));
+    
+    playlistCardBody.appendChild(playlistTitle);
+    playlistCard.appendChild(playlistCardImage);
+    playlistCard.appendChild(playlistCardBody);
+    playlistDiv.appendChild(playlistCard);
+
+    playlistCard.onclick = function () {
       runPlaylist(playlist.id);
     };
-    list.appendChild(listItem);
   });
 
   document.getElementById("music-controls").style.display = "none";
@@ -74,7 +86,8 @@ function displayPlaylists() {
 
 function runPlaylist(playlistId) {
   var musicFrame = document.getElementById("music-iframe");
-  musicFrame.setAttribute("src", `${playlistUrl}${playlistId}`)
+  var fullUrl = playlistUrl + playlistId;
+  musicFrame.setAttribute("src", fullUrl);
   musicFrame.style.display = "inline";
 
 }

@@ -51,12 +51,16 @@
     border: 1px solid black;
     border-radius: 10px 10px 0 0;
     background-color: #F7F7F7;
-    opacity: .85;
+    opacity: .95;
     position: fixed;
     bottom: -58%;
     left: 25%;
     transition: all .65s ease-in-out;
+    overflow: auto;
 }
+#music-player::-webkit-scrollbar { width: 0 !important }
+#music-player { overflow: -moz-scrollbars-none; }
+#music-player { -ms-overflow-style: none; }
 
 #music-player:hover {
     bottom: 0px;
