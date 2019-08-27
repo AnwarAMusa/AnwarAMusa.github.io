@@ -15,7 +15,7 @@ function loadClient() {
 function execute() {
     return gapi.client.youtube.playlists.list({
             "part": "snippet,contentDetails",
-            "maxResults": 25,
+            "maxResults": 50,
             "mine": true
         })
         .then(function (response) {
