@@ -7,31 +7,32 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <div id="first-image" class="images"></div>
-
     <div id="second-image" class="images"></div>
 
     <span id="fullscreen-icon" class="material-icons" onclick="fullscreen()">fullscreen</span>
 
-    <div id="credits">
-        <a href="https://unsplash.com/" target="_blank">Photos from Unsplash</a>
-    </div>
+    <a id="credits" href="https://unsplash.com/" target="_blank">Photos from Unsplash</a>
 
     <div id="music-player">
-        <iframe id="music-iframe" src="." allow="autoplay; encrypted-media" style="display:none;"></iframe>
-        <div id="playlists" class="card-columns"></div>
-        <div id="music-controls">
-            <button onclick="authenticate().then(loadClient).then(execute).then(displayPlaylists)">Get YouTube
-                Playlists</button>
+        <div id="iframe-container">
+            <iframe id="music-iframe" src="." allow="autoplay; encrypted-media"></iframe>
         </div>
+        <div id="playlists" class="card-columns"></div>
+        <button id="get-playlists-button" class="btn btn-primary"
+            onclick="authenticate().then(loadClient).then(execute).then(displayPlaylists)">
+            Get YouTube Playlists
+        </button>
     </div>
 
+    <script src="js/imageLoader.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/playlistFetcher.js"></script>
 </body>
 
 </html>

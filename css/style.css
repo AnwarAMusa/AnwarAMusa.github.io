@@ -7,10 +7,7 @@
     width: 100%;
     height: 100%;
     opacity: 1;
-    /* in order to show music-player */
-    z-index: -1;
-
-    background: url(https://source.unsplash.com/random/1920x1080) no-repeat center center fixed;
+    background: url(https://source.unsplash.com/random/1920x1080/?nature,mountain,lake,river,sea,snow,sand,stars) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -33,49 +30,69 @@
     position: fixed;
     bottom: 0px;
     left: 0px;
-}
-
-#credits>a {
     opacity: 0.4;
     text-decoration: none;
 }
 
-#credits>a:hover {
+#credits:hover {
     opacity: 1;
 }
 
 #music-player {
     width: 50%;
-    height: 62%;
-    margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 10px 10px 0 0;
-    background-color: #F7F7F7;
-    opacity: .95;
-    position: fixed;
-    bottom: -58%;
+    height: 60%;
     left: 25%;
+    bottom: -55%;
+    margin: 0 auto;
+    background-color: #F5F5F5;
+    position: fixed;
     transition: all .65s ease-in-out;
     overflow: auto;
+    -ms-overflow-style: none;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
 }
-#music-player::-webkit-scrollbar { width: 0 !important }
-#music-player { overflow: -moz-scrollbars-none; }
-#music-player { -ms-overflow-style: none; }
+
+#music-player::-webkit-scrollbar {
+    width: 0 !important
+}
 
 #music-player:hover {
     bottom: 0px;
 }
 
-#music-iframe {
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid black; */
-    border-radius: 10px 10px 0 0;
+#iframe-container {
+    display: none;
+    position: relative;
+    padding-top: 56.25%;
 }
 
-#music-controls {
+#music-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#playlists {
+    padding: 18px;
+}
+
+#get-playlists-button {
     position: absolute;
     bottom: 45%;
     left: 40%;
     margin: auto;
+}
+
+.card {
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .12);
 }
