@@ -57,4 +57,5 @@ function displayPlaylists() {
 function runPlaylist(playlistId) {
     document.getElementById("music-iframe").setAttribute("src", playlistUrl.replace('<playlistId>', playlistId));
     document.getElementById("iframe-container").style.display = "block";
+    document.getElementById("music-player").scrollTop = 0;
 }
